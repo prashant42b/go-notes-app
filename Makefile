@@ -3,4 +3,4 @@ build:
 run: 
 	build ./server
 watch:
-	reflex -s -r '\.go$$' make run
+	reflex -s -r '\.go$$' make run	
