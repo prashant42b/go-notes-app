@@ -1,17 +1,21 @@
 package config
 
 import (
-	"fmt"
-	"os"
-
-	"github.com/joho/godotenv"
+	"github.com/spf13/viper"
 )
 
-func Config(key string) string {
-	err := godotenv.Load(".env")
-	if err != nil {
-		fmt.Print("Error loading .env file")
-	}
-	// Return the value of the variable
-	return os.Getenv(key)
+var (
+	HOST     = ""
+	NAME     = ""
+	USER     = ""
+	PASSWORD = ""
+	PORT     = ""
+)
+
+func LoadConfig() {
+	HOST = viper.GetString("DB_HOST")
+	NAME = viper.GetString("DB_NAME")
+	USER = viper.GetString("DB_USER")
+	PASSWORD = viper.GetString("DB_PASSWORD")
+	PORT = viper.GetString("DB_PORT")
 }
